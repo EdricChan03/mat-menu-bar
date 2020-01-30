@@ -1,0 +1,15 @@
+<h1>Menu bar demo</h1>
+
+<h2>Default menu bar</h2>
+
+<details>
+  <summary>Current menu bar items</summary>
+  <pre><code>{{ menuBarService.menuBarItems | json }}</code></pre>
+</details>
+
+<h3>Dense mode (default)</h3>
+
+<app-menu-bar [items]="menuBarService.menuBarItems"></app-menu-bar>
+
+<h3>Non-dense mode</h3>
+<app-menu-bar [items]="menuBarService.menuBarItems" [dense]="false"></app-menu-bar>

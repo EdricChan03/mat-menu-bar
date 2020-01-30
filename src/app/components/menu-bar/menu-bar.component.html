@@ -1,0 +1,8 @@
+<div class="app-menubar" role="menubar">
+	<ng-container *ngFor="let item of items">
+		<button mat-button [disabled]="item.disabled" [matMenuTriggerFor]="menu.childMenu" disableRipple role="menuitem">
+      {{ item.title }}
+    </button>
+    <app-menu-item #menu [items]="item.items" [dense]="dense"></app-menu-item>
+	</ng-container>
+</div>

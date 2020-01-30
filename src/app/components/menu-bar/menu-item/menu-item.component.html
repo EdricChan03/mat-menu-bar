@@ -1,0 +1,42 @@
+<!-- Code adapted from https://stackoverflow.com/a/53977579/6782707. -->
+<mat-menu #childMenu="matMenu" [class]="menuClass">
+  <ng-container *ngFor="let child of items">
+    <!-- Handle branch node menu items -->
+    <ng-container *ngIf="child.type !== 'radio' && child.children && child.children.length > 0">
+      <button mat-menu-item [matMenuTriggerFor]="menu.childMenu" [disabled]="child.disabled">
+        <mat-icon *ngIf="child.icon && !child.svgIcon">{{child.icon}}</mat-icon>
+        <mat-icon *ngIf="child.svgIcon && !child.icon" [svgIcon]="child.svgIcon"></mat-icon>
+        <span>{{ child.title }}</span>
+      </button>
+      <app-menu-item #menu [items]="child.children" [dense]="dense"></app-menu-item>
+    </ng-container>
+    <ng-container *ngIf="child.type === 'radio' && child.children && child.children.length > 0">
+      <button mat-menu-item [matMenuTriggerFor]="childRadioMenu" [disabled]="child.disabled">
+        <mat-icon *ngIf="child.icon && !child.svgIcon">{{child.icon}}</mat-icon>
+        <mat-icon *ngIf="child.svgIcon && !child.icon" [svgIcon]="child.svgIcon"></mat-icon>
+        <span>{{ child.title }}</span>
+      </button>
+      <mat-menu #childRadioMenu [class]="menuClass">
+        <button mat-menu-item *ngFor="let radioChild of child.children" [disabled]="radioChild.disabled" (click)="onRadioMenuItemClick(child, radioChild, $event)" role="menuitemradio" [attr.aria-checked]="child.value === radioChild.value">
+          <mat-icon *ngIf="child.value === radioChild.value">check</mat-icon>
+          <span>{{ radioChild.title }}</span>
+        </button>
+      </mat-menu>
+    </ng-container>
+    <!-- Handle leaf node menu items -->
+    <ng-container *ngIf="!child.children || child.children.length === 0" [ngSwitch]="child.type">
+      <button mat-menu-item *ngSwitchCase="'checkbox'" [disabled]="child.disabled" (click)="onCheckboxMenuItemClick(child, $event)" role="menuitemcheckbox" [attr.aria-checked]="child.value === true">
+        <mat-icon *ngIf="child.value === true">check</mat-icon>
+        <span>{{ child.title }}</span>
+        <span class="menu-bar-item-menu-item--command">{{ child.command }}</span>
+      </button>
+      <mat-divider *ngSwitchCase="'divider'"></mat-divider>
+      <button mat-menu-item (click)="child.onClick(child, $event)" *ngSwitchDefault [disabled]="child.disabled">
+        <mat-icon *ngIf="child.icon && !child.svgIcon">{{child.icon}}</mat-icon>
+        <mat-icon *ngIf="child.svgIcon && !child.icon" [svgIcon]="child.svgIcon"></mat-icon>
+        <span>{{ child.title }}</span>
+        <span class="menu-bar-item-menu-item--command">{{ child.command }}</span>
+      </button>
+    </ng-container>
+  </ng-container>
+</mat-menu>

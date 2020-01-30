@@ -1,0 +1,31 @@
+/* Add application styles & imports to this file! */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+.active-link {
+  color: #3F51B5 !important;
+  background-color: #DCDCDC;
+}
+
+.app-sidenav {
+  min-width: 240px;
+}
+
+/* Menu bar styles */
+
+.menu-bar-item-menu {
+  &.menu-bar-item-menu--dense {
+    width: 320px;
+    .mat-menu-item {
+      height: 32px;
+      line-height: 32px;
+    }
+  }
+  .mat-menu-item {
+    .menu-bar-item-menu-item--command {
+      float: right;
+    }
+  }
+  mat-divider {
+    margin: 8px 0;
+  }
+}

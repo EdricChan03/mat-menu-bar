@@ -1,0 +1,22 @@
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DemosService {
+  /** The list of demos. */
+  readonly demos = [
+    {
+      title: 'Default menu bar',
+      id: 'default-menu-bar'
+    },
+    {
+      title: 'Custom menu bar',
+      id: 'custom-menu-bar'
+    },
+    {
+      title: 'Dynamic menu bar',
+      id: 'dynamic-menu-bar'
+    }
+  ]
+}
