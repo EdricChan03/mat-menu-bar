@@ -36,6 +36,6 @@ export class MaterialModule {
     private iconRegistry: MatIconRegistry
   ) {
     iconRegistry.addSvgIconSetInNamespace('mdi',
-      dom.bypassSecurityTrustResourceUrl('https://www.unpkg.com/@mdi/angular-material@4.8.95/mdi.svg'));
+      dom.bypassSecurityTrustResourceUrl('./assets/mdi.svg'));
   }
 }
