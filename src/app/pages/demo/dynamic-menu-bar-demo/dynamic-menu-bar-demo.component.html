@@ -1,0 +1,22 @@
+
+<h2>Dynamic menu bar</h2>
+
+<h3>Add new menu bar item</h3>
+
+<mat-card>
+  <mat-card-title>Add new menu bar item</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="addMenuBarItemForm" fxLayout="column">
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title">
+        <mat-error>This is required.</mat-error>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-button (click)="resetForm()" color="warn" [disabled]="addMenuBarItemForm.disabled">Reset</button>
+    <button mat-button (click)="addMenuBarItem()" color="primary">Add menu bar item</button>
+  </mat-card-actions>
+</mat-card>
+<h3>Dense mode (default)</h3>
