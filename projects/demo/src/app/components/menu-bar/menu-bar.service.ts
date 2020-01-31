@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { GenericMenuItem, MenuBarItem, MenuItemCheckbox, MenuItemRadio, DefaultMenuItem } from './models/menu-bar';
+import { GenericMenuItem, MenuBarItem, MenuItem, MenuItemCheckbox, MenuItemRadio } from './models/menu-bar';
 
 @Injectable()
 export class MenuBarService {
@@ -556,26 +556,24 @@ export class MenuBarService {
     });
     this.customMenuBarItems.forEach(menu => {
       if (menu.items) {
-        menu.items.forEach(item => {
-          if (!('type' in item) || item.type !== 'divider') {
-            this.setItemListeners(item);
-          }
-        });
+        menu.items.forEach(item => this.setItemListeners);
       }
     });
   }
 
-  private setItemListeners(item: GenericMenuItem) {
-    if (!item.children || item.children.length === 0) {
-      item.onClick = this.itemOnClick;
-    }
+  private setItemListeners(item: MenuItem) {
+    if (!('type' in item) || item.type !== 'divider') {
+      if (!item.children || item.children.length === 0) {
+        item.onClick = this.itemOnClick;
+      }
 
-    if (item.type === 'checkbox' || item.type === 'radio') {
-      item.onValueChange = (oldValue, newValue) => this.itemOnChange(item, oldValue, newValue);
-    }
+      if ('type' in item && (item.type === 'checkbox' || item.type === 'radio')) {
+        item.onValueChange = (oldValue: string | boolean, newValue: string | boolean) => this.itemOnChange(item, oldValue, newValue);
+      }
 
-    if (item.children && item.children.length > 0) {
-      item.children.forEach(item => this.setItemListeners(item));
+      if (item.children && item.children.length > 0) {
+        item.children.forEach((item: MenuItem) => this.setItemListeners);
+      }
     }
   }
 

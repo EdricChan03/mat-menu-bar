@@ -1,6 +1,7 @@
 // Code adapted from https://stackoverflow.com/a/53977579/6782707.
-
 import { Component, Input, ViewChild } from '@angular/core';
+import { MatMenu } from '@angular/material/menu';
+
 import { MenuItem, MenuItemCheckbox, MenuItemRadio, MenuItemRadioChild } from '../models/menu-bar';
 
 @Component({
@@ -32,11 +33,11 @@ export class MenuItemComponent {
     return this.menuClasses.join(' ');
   }
 
-  @ViewChild('childMenu', { static: true }) public childMenu;
+  @ViewChild('childMenu', { static: true }) public childMenu: MatMenu;
 
   onRadioMenuItemClick(parentItem: MenuItemRadio, item: MenuItemRadioChild,
     ev: Event) {
-    if ('onClick' in item) {
+    if (item.onClick) {
       item.onClick(item, ev);
     }
   
@@ -44,13 +45,13 @@ export class MenuItemComponent {
     const newValue = item.value;
     parentItem.value = item.value;
 
-    if ('onValueChange' in parentItem) {
+    if (parentItem.onValueChange) {
       parentItem.onValueChange(oldValue, newValue);
     }
   }
 
   onCheckboxMenuItemClick(item: MenuItemCheckbox, ev: Event) {
-    if ('onClick' in item) {
+    if (item.onClick) {
       item.onClick(item, ev);
     }
 
@@ -58,7 +59,7 @@ export class MenuItemComponent {
     const newValue = !item.value;
     item.value = !item.value;
 
-    if ('onValueChange' in item) {
+    if (item.onValueChange) {
       item.onValueChange(oldValue, newValue);
     }
   }

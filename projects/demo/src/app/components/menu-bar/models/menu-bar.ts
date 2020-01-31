@@ -1,7 +1,8 @@
-export interface GenericMenuItem {
+export interface GenericMenuItem<T = MenuItem> {
   title: string;
   command?: string | string[];
   disabled?: boolean;
+  children?: T[];
 }
 
 export interface MenuItemWithIcon {
@@ -17,11 +18,7 @@ export interface MenuItemOnValueChangeListener<T> {
   onValueChange?: (newValue: T, oldValue: T) => void;
 }
 
-export interface MenuItemChildren {
-  children?: MenuItem[];
-}
-
-export interface DefaultMenuItem extends GenericMenuItem, MenuItemWithIcon, MenuItemOnClickListener, MenuItemChildren { }
+export interface DefaultMenuItem extends GenericMenuItem, MenuItemWithIcon, MenuItemOnClickListener { }
 
 export interface MenuItemCheckbox extends GenericMenuItem, MenuItemOnClickListener, MenuItemOnValueChangeListener<boolean> {
   type: 'checkbox';
@@ -34,7 +31,7 @@ export interface MenuItemRadioChild extends MenuItemOnClickListener {
   disabled?: boolean;
 }
 
-export interface MenuItemRadio extends GenericMenuItem, MenuItemOnClickListener, MenuItemOnValueChangeListener<string> {
+export interface MenuItemRadio extends GenericMenuItem, MenuItemWithIcon, MenuItemOnClickListener, MenuItemOnValueChangeListener<string> {
   type: 'radio';
   value: string;
   children: MenuItemRadioChild[];
