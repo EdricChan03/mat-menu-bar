@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { MenuBarService } from '../../../components/menu-bar/menu-bar.service';
+import { MenuBarService } from '../../../menu-bar.service';
 
 @Component({
   selector: 'app-default-menu-bar-demo',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { GenericMenuItem, MenuBarItem, MenuItem, MenuItemCheckbox, MenuItemRadio } from './models/menu-bar';
+import { GenericMenuItem, MenuBarItem, MenuItem, MenuItemCheckbox, MenuItemRadio } from './components/menu-bar/models/menu-bar';
 
 @Injectable()
 export class MenuBarService {

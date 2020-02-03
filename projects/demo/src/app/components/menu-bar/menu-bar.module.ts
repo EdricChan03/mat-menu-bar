@@ -8,7 +8,7 @@ import { MatMenuModule } from '@angular/material/menu';
 
 import { MenuBarComponent } from './menu-bar.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
-import { MenuBarService } from './menu-bar.service';
+import { MenuBarService } from '../../menu-bar.service';
 
 const MATERIAL_MODULES = [
   MatButtonModule,

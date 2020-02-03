@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { MenuBarService } from './menu-bar.service';
+import { MenuBarService } from '../../menu-bar.service';
 import { MenuBarItem } from './models/menu-bar';
 
 @Component({
