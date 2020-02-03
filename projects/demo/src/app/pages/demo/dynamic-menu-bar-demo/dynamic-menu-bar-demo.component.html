@@ -19,10 +19,10 @@
       <mat-checkbox formControlName="disabled">Is disabled?</mat-checkbox>
 
       <div formArrayName="items">
-        <h4>Menu items</h4>
+        <h3>Menu items</h3>
         <button mat-button (click)="addMenuItem()">Add menu item</button>
         <mat-accordion>
-          <mat-expansion-panel *ngFor="let item of items.controls; let i=index" [formGroup]="item">
+          <mat-expansion-panel *ngFor="let item of items.controls" [formGroup]="item">
             <mat-expansion-panel-header>
               <mat-panel-title>
                 {{ (item.get('title')?.valueChanges | async) || '&lt;No title&gt;' }}
