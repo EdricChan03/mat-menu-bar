@@ -15,18 +15,16 @@ export class DynamicMenuBarDemoComponent {
   constructor(
     fb: FormBuilder
   ) {
-    this.menuItemFormGroup = fb.group({
-      title: ['', Validators.required],
-      command: '',
-      icon: '',
-      isSvgIcon: false,
-      disabled: false
-    });
-
     this.addMenuBarItemForm = fb.group({
       title: ['', Validators.required],
       items: fb.array([
-        this.menuItemFormGroup
+        fb.group({
+          title: ['', Validators.required],
+          command: '',
+          icon: '',
+          isSvgIcon: false,
+          disabled: false
+        })
       ]),
       disabled: false
     });
@@ -37,7 +35,13 @@ export class DynamicMenuBarDemoComponent {
   }
 
   addMenuItem() {
-    this.items.push(this.menuItemFormGroup);
+    this.items.push(this.fb.group({
+      title: ['', Validators.required],
+      command: '',
+      icon: '',
+      isSvgIcon: false,
+      disabled: false
+    }));
   }
 
   addMenuBarItem() {
