@@ -1,14 +1,14 @@
-<h2>Custom menu bar</h2>
+<h1>Custom menu bar</h1>
 
 <details>
   <summary>Current custom menu bar items</summary>
   <pre><code>{{ menuBarService.customMenuBarItems | json }}</code></pre>
 </details>
 
-<h3>Dense mode (default)</h3>
+<h2>Dense mode (default)</h2>
 
 <app-menu-bar [items]="menuBarService.customMenuBarItems"></app-menu-bar>
 
-<h3>Non-dense mode</h3>
+<h2>Non-dense mode</h2>
 
 <app-menu-bar [items]="menuBarService.customMenuBarItems" [dense]="false"></app-menu-bar>
