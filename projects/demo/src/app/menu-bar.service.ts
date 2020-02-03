@@ -556,7 +556,7 @@ export class MenuBarService {
     });
     this.customMenuBarItems.forEach(menu => {
       if (menu.items) {
-        menu.items.forEach(item => this.setItemListeners);
+        menu.items.forEach(item => this.setItemListeners(item));
       }
     });
   }
@@ -572,7 +572,7 @@ export class MenuBarService {
       }
 
       if (item.children && item.children.length > 0) {
-        item.children.forEach((item: MenuItem) => this.setItemListeners);
+        item.children.forEach((item: MenuItem) => this.setItemListeners(item));
       }
     }
   }
