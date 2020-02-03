@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
 import { CustomMenuBarDemoComponent } from './custom-menu-bar-demo/custom-menu-bar-demo.component';
-import { DefaultMenuBarDemoComponent } from './default-menu-bar-demo/default-menu-bar-demo.component';
+import { DocsAppMenuBarDemoComponent } from './docs-app-menu-bar-demo/docs-app-menu-bar-demo.component';
 import { DemoRoutingModule } from './demo-routing.module';
 import { DynamicMenuBarDemoComponent } from './dynamic-menu-bar-demo/dynamic-menu-bar-demo.component';
 import { MenuBarModule } from '../../components/menu-bar/menu-bar.module';
@@ -34,7 +34,7 @@ const MATERIAL_MODULES = [
   ],
   declarations: [
     CustomMenuBarDemoComponent,
-    DefaultMenuBarDemoComponent,
+    DocsAppMenuBarDemoComponent,
     DynamicMenuBarDemoComponent
   ]
 })

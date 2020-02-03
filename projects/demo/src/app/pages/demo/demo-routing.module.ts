@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { CustomMenuBarDemoComponent } from './custom-menu-bar-demo/custom-menu-bar-demo.component';
-import { DefaultMenuBarDemoComponent } from './default-menu-bar-demo/default-menu-bar-demo.component';
+import { DocsAppMenuBarDemoComponent } from './docs-app-menu-bar-demo/docs-app-menu-bar-demo.component';
 import { DynamicMenuBarDemoComponent } from './dynamic-menu-bar-demo/dynamic-menu-bar-demo.component';
 
 const routes: Routes = [
@@ -11,8 +11,12 @@ const routes: Routes = [
     component: CustomMenuBarDemoComponent
   },
   {
+    path: 'docs-app-menu-bar',
+    component: DocsAppMenuBarDemoComponent
+  },
+  {
     path: 'default-menu-bar',
-    component: DefaultMenuBarDemoComponent
+    redirectTo: 'docs-app-menu-bar'
   },
   {
     path: 'dynamic-menu-bar',

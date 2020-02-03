@@ -7,8 +7,8 @@ export class DemosService {
   /** The list of demos. */
   readonly demos = [
     {
-      title: 'Default menu bar',
-      id: 'default-menu-bar'
+      title: 'Docs app menu bar',
+      id: 'docs-app-menu-bar'
     },
     {
       title: 'Custom menu bar',
