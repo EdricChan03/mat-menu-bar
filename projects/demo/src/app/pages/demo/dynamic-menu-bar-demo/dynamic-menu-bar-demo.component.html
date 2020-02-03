@@ -12,11 +12,55 @@
         <input matInput formControlName="title">
         <mat-error>This is required.</mat-error>
       </mat-form-field>
+
+      <mat-checkbox formControlName="disabled">Is disabled?</mat-checkbox>
+
+      <div formArrayName="items">
+        <h4>Menu items</h4>
+        <button mat-button (click)="addMenuItem()">Add menu item</button>
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let item of items.controls; let i=index" [formGroup]="item">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{ (item.get('title')?.valueChanges | async) || '&lt;No title&gt;' }}
+              </mat-panel-title>
+              <mat-panel-description>
+                Icon: {{ item.get('icon')?.value || (item.get('icon')?.valueChanges | async) || '&lt;No icon&gt;' }},
+                Command: {{ item.get('command')?.value || (item.get('command')?.valueChanges | async) || '&lt;No command&gt;' }},
+                Is SVG icon: {{ item.get('isSvgIcon')?.value || (item.get('isSvgIcon')?.valueChanges | async) || 'false' }},
+                Disabled: {{ item.get('disabled')?.value || (item.get('disabled')?.valueChanges | async) || 'false' }}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="expansion-panel-content" fxLayout="column">
+              <mat-form-field>
+                <mat-label>Title</mat-label>
+                <input matInput formControlName="title">
+                <mat-error>This is required.</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Command</mat-label>
+                <input matInput formControlName="command">
+                <mat-hint>The keyboard shortcut to be shown next to the title.</mat-hint>
+              </mat-form-field>
+              <mat-form-field>
+                <span matPrefix *ngIf="item.get('isSvgIcon')?.valueChanges | async">mdi:</span>
+                <mat-label>{{ (item.get('isSvgIcon')?.valueChanges | async) ? 'SVG ' : '' }}Icon</mat-label>
+                <input matInput formControlName="icon">
+                <mat-hint>The icon to be shown before the title.</mat-hint>
+              </mat-form-field>
+              <mat-checkbox formControlName="isSvgIcon">Is SVG icon?</mat-checkbox>
+              <mat-checkbox formControlName="disabled">Is disabled?</mat-checkbox>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
     </form>
   </mat-card-content>
   <mat-card-actions align="end">
-    <button mat-button (click)="resetForm()" color="warn" [disabled]="addMenuBarItemForm.disabled">Reset</button>
-    <button mat-button (click)="addMenuBarItem()" color="primary">Add menu bar item</button>
+    <button mat-button (click)="addMenuBarItemForm.reset()" color="warn">Reset</button>
+    <button mat-button (click)="addMenuBarItem()" color="primary" [disabled]="addMenuBarItemForm.invalid">Add menu bar item</button>
   </mat-card-actions>
 </mat-card>
 <h3>Dense mode (default)</h3>
+
+<app-menu-bar [items]="menuBarItems"></app-menu-bar>

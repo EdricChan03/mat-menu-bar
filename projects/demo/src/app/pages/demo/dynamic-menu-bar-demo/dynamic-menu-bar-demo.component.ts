@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MenuBarItem } from '../../../components/menu-bar/models/menu-bar';
 
 @Component({
   selector: 'app-dynamic-menu-bar-demo',
@@ -8,18 +9,67 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class DynamicMenuBarDemoComponent {
   addMenuBarItemForm: FormGroup;
+  menuItemFormGroup: FormGroup;
+  menuBarItems: MenuBarItem[] = [];
+
   constructor(
     fb: FormBuilder
   ) {
+    this.menuItemFormGroup = fb.group({
+      title: ['', Validators.required],
+      command: '',
+      icon: '',
+      isSvgIcon: false,
+      disabled: false
+    });
+
     this.addMenuBarItemForm = fb.group({
-      title: [null, Validators.required],
+      title: ['', Validators.required],
       items: fb.array([
-        fb.group({
-          title: [null, Validators.required],
-          command: null,
-          disabled: false
-        })
-      ])
-    })
+        this.menuItemFormGroup
+      ]),
+      disabled: false
+    });
+  }
+
+  get items() {
+    return this.addMenuBarItemForm.get('items') as FormArray;
+  }
+
+  addMenuItem() {
+    this.items.push(this.menuItemFormGroup);
+  }
+
+  addMenuBarItem() {
+    const tempValue: any = {};
+    const formValue = this.addMenuBarItemForm.value;
+    for (const key in formValue) {
+      switch (key) {
+        case 'items':
+          formValue[key].forEach((arrayVal: any, i: number) => {
+            let tempItemsValue: any = {};
+            if (arrayVal['icon'].length > 0) {
+              if (arrayVal['isSvgIcon']) {
+                arrayVal['svgIcon'] = `mdi:${arrayVal['icon']}`;
+                delete arrayVal['icon'];
+              }
+            } else {
+              delete arrayVal['icon'];
+            }
+            delete arrayVal['isSvgIcon'];
+            
+            tempItemsValue = arrayVal;
+            if (!Array.isArray(tempValue[key])) {
+              tempValue[key] = [];
+            }
+            tempValue[key].push(tempItemsValue);
+          })
+          break;
+        default:
+          tempValue[key] = formValue[key];
+      }
+    }
+    console.log('Menu bar item to add:', tempValue);
+    this.menuBarItems.push(tempValue);
   }
 }
