@@ -19,6 +19,7 @@
 .menu-bar-item-menu {
   &.menu-bar-item-menu--dense {
     width: 320px;
+    min-height: 48px;
     .mat-menu-item {
       height: 32px;
       line-height: 32px;
