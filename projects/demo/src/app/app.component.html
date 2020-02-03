@@ -14,7 +14,9 @@
       </a>
       <h3 matSubheader>Demos</h3>
       <a mat-list-item *ngFor="let demo of demosService.demos" [routerLink]="['/demos', demo.id]" routerLinkActive="active-link">
-        <mat-icon matListIcon>play_circle_fill</mat-icon>
+        <mat-icon matListIcon *ngIf="!demo.icon && !demo.svgIcon">play_circle_fill</mat-icon>
+        <mat-icon matListIcon *ngIf="demo.icon && !demo.svgIcon">{{ demo.icon }}</mat-icon>
+        <mat-icon matListIcon *ngIf="!demo.icon && demo.svgIcon" [svgIcon]="demo.svgIcon"></mat-icon>
         <h2 matLine>{{ demo.title }}</h2>
       </a>
     </mat-nav-list>
