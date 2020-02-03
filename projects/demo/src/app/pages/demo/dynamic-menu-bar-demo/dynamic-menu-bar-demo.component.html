@@ -1,6 +1,11 @@
 
 <h1>Dynamic menu bar demo</h1>
 
+<details>
+  <summary>Current menu bar items</summary>
+  <pre><code>{{ menuBarItems | json }}</code></pre>
+</details>
+
 <mat-card>
   <mat-card-title>Add new menu bar item</mat-card-title>
   <mat-card-content>
@@ -63,3 +68,7 @@
 <h2>Dense mode (default)</h2>
 
 <app-menu-bar [items]="menuBarItems"></app-menu-bar>
+
+<h2>Non-dense mode</h2>
+
+<app-menu-bar [items]="menuBarItems" [dense]="false"></app-menu-bar>
