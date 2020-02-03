@@ -52,13 +52,11 @@ export class DynamicMenuBarDemoComponent {
         case 'items':
           formValue[key].forEach((arrayVal: any, i: number) => {
             let tempItemsValue: any = {};
-            if (arrayVal['icon'].length > 0) {
+            if ('icon' in arrayVal && arrayVal['icon'].length > 0) {
               if (arrayVal['isSvgIcon']) {
                 arrayVal['svgIcon'] = `mdi:${arrayVal['icon']}`;
                 delete arrayVal['icon'];
               }
-            } else {
-              delete arrayVal['icon'];
             }
             delete arrayVal['isSvgIcon'];
             
