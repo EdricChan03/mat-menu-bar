@@ -547,11 +547,7 @@ export class MenuBarService {
   constructor() {
     this.menuBarItems.forEach(menu => {
       if (menu.items) {
-        menu.items.forEach(item => {
-          if (!('type' in item) || item.type !== 'divider') {
-            this.setItemListeners(item);
-          }
-        });
+        menu.items.forEach(item => this.setItemListeners(item));
       }
     });
     this.customMenuBarItems.forEach(menu => {
