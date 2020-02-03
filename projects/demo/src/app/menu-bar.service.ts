@@ -414,18 +414,22 @@ export class MenuBarService {
           icon: 'content_cut'
         },
         {
-          title: 'Menu item 3 (with command)',
+          title: 'Menu item 3 (with SVG icon)',
+          svgIcon: 'mdi:rename-box'
+        },
+        {
+          title: 'Menu item 4 (with command)',
           command: '⌘+Shift+A'
         },
         {
-          title: 'Menu item 4 (disabled)',
+          title: 'Menu item 5 (disabled)',
           disabled: true
         },
         {
           type: 'divider'
         },
         {
-          title: 'Menu item 5 (with submenu)',
+          title: 'Menu item 6 (with submenu)',
           children: [
             {
               title: 'Submenu item 1'
@@ -435,18 +439,22 @@ export class MenuBarService {
               icon: 'file_upload'
             },
             {
-              title: 'Submenu item 3 (with command)',
+              title: 'Submenu item 3 (with SVG icon)',
+              svgIcon: 'mdi:account-child'
+            },
+            {
+              title: 'Submenu item 4 (with command)',
               command: '⌘R'
             },
             {
-              title: 'Submenu item 4 (disabled)',
+              title: 'Submenu item 5 (disabled)',
               disabled: true
             },
             {
               type: 'divider'
             },
             {
-              title: 'Submenu item 4 (with submenu)',
+              title: 'Submenu item 6 (with submenu)',
               children: [
                 {
                   title: 'Submenu submenu item 1'
@@ -462,8 +470,18 @@ export class MenuBarService {
           ]
         },
         {
-          title: 'Menu item 6 (with submenu and icon, disabled)',
+          title: 'Menu item 7 (with submenu and icon, disabled)',
           icon: 'apps',
+          disabled: true,
+          children: [
+            {
+              title: 'Submenu item 1'
+            }
+          ]
+        },
+        {
+          title: 'Menu item 8 (with submenu and SVG icon, disabled)',
+          svgIcon: 'mdi:audiobook',
           disabled: true,
           children: [
             {
