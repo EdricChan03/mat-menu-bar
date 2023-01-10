@@ -26,7 +26,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "action:githubPages": "ng build --configuration production --base-href=/mat-menu-bar/"
+    "action:githubPages": "ng deploy --no-silent"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.0.5",
@@ -36,6 +36,7 @@
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
+    "angular-cli-ghpages": "^1.0.5",
     "codelyzer": "^6.0.0",
     "jasmine-core": "~3.8.0",
     "jasmine-spec-reporter": "~5.0.0",

@@ -101,6 +101,12 @@
               }
             ]
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/mat-menu-bar/"
+          }
         }
       }
     }
