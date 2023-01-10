@@ -20,14 +20,22 @@
   &.menu-bar-item-menu--dense {
     width: 320px;
     min-height: 48px;
-    .mat-menu-item {
-      height: 32px;
+    .mat-mdc-menu-item {
+      min-height: 32px;
       line-height: 32px;
     }
   }
-  .mat-menu-item {
+  mat-icon {
+    min-width: 24px;
+  }
+
+  .mat-mdc-menu-item .mdc-list-item__primary-text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
     .menu-bar-item-menu-item--command {
-      float: right;
+      margin-left: 20px;
     }
   }
   mat-divider {
