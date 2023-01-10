@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MenuBarItem } from '../../../components/menu-bar/models/menu-bar';
 
 @Component({
@@ -8,12 +8,12 @@ import { MenuBarItem } from '../../../components/menu-bar/models/menu-bar';
   styles: []
 })
 export class DynamicMenuBarDemoComponent {
-  addMenuBarItemForm: FormGroup;
-  menuItemFormGroup: FormGroup;
+  addMenuBarItemForm: UntypedFormGroup;
+  menuItemFormGroup: UntypedFormGroup;
   menuBarItems: MenuBarItem[] = [];
 
   constructor(
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) {
     this.addMenuBarItemForm = fb.group({
       title: ['', Validators.required],
@@ -31,7 +31,7 @@ export class DynamicMenuBarDemoComponent {
   }
 
   get items() {
-    return this.addMenuBarItemForm.get('items') as FormArray;
+    return this.addMenuBarItemForm.get('items') as UntypedFormArray;
   }
 
   addMenuItem() {
