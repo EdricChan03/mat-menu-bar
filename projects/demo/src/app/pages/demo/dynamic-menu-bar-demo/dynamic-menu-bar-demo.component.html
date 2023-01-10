@@ -6,10 +6,12 @@
   <pre><code>{{ menuBarItems | json }}</code></pre>
 </details>
 
-<mat-card>
-  <mat-card-title>Add new menu bar item</mat-card-title>
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>Add new menu bar item</mat-card-title>
+  </mat-card-header>
   <mat-card-content>
-    <form [formGroup]="addMenuBarItemForm" fxLayout="column">
+    <form [formGroup]="addMenuBarItemForm" class="menu-bar-form">
       <mat-form-field>
         <mat-label>Title</mat-label>
         <input matInput formControlName="title">
@@ -34,7 +36,7 @@
                 Disabled: {{ item.get('disabled')?.value || (item.get('disabled')?.valueChanges | async) || 'false' }}
               </mat-panel-description>
             </mat-expansion-panel-header>
-            <div class="expansion-panel-content" fxLayout="column">
+            <div class="expansion-panel-content" class="menu-bar-form">
               <mat-form-field>
                 <mat-label>Title</mat-label>
                 <input matInput formControlName="title">

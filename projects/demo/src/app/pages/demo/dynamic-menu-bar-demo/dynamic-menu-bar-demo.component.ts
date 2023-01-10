@@ -5,7 +5,7 @@ import { MenuBarItem } from '../../../components/menu-bar/models/menu-bar';
 @Component({
   selector: 'app-dynamic-menu-bar-demo',
   templateUrl: './dynamic-menu-bar-demo.component.html',
-  styles: []
+  styleUrls: ['./dynamic-menu-bar-demo.component.css']
 })
 export class DynamicMenuBarDemoComponent {
   addMenuBarItemForm: UntypedFormGroup;
@@ -59,7 +59,7 @@ export class DynamicMenuBarDemoComponent {
               }
             }
             delete arrayVal['isSvgIcon'];
-            
+
             tempItemsValue = arrayVal;
             if (!Array.isArray(tempValue[key])) {
               tempValue[key] = [];
