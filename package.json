@@ -21,7 +21,6 @@
     "zone.js": "~0.10.2"
   },
   "scripts": {
-    "postinstall": "ngcc",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
