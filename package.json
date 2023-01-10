@@ -27,7 +27,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "action:githubPages": "ng build --prod --base-href=/mat-menu-bar/"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.11",
