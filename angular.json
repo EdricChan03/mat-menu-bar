@@ -105,7 +105,6 @@
       }
     }
   },
-  "defaultProject": "mat-menu-bar-demo",
   "cli": {
     "analytics": false
   }
