@@ -1,6 +1,6 @@
 // Code adapted from https://stackoverflow.com/a/53977579/6782707.
 import { Component, Input, ViewChild } from '@angular/core';
-import { MatLegacyMenu as MatMenu } from '@angular/material/legacy-menu';
+import { MatMenu } from '@angular/material/menu';
 
 import { MenuItem, MenuItemCheckbox, MenuItemRadio, MenuItemRadioChild } from '../models/menu-bar';
 
