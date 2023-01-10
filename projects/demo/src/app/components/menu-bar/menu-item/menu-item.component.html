@@ -18,7 +18,8 @@
       </button>
       <mat-menu #childRadioMenu [class]="menuClass">
         <button mat-menu-item *ngFor="let radioChild of child.children" [disabled]="radioChild.disabled" (click)="onRadioMenuItemClick(child, radioChild, $event)" role="menuitemradio" [attr.aria-checked]="child.value === radioChild.value">
-          <mat-icon *ngIf="child.value === radioChild.value">check</mat-icon>
+          <mat-icon>{{ child.value === radioChild.value ? 'radio_button_checked' : 'radio_button_unchecked' }}</mat-icon>
+          <!-- <mat-icon *ngIf="child.value === radioChild.value">check</mat-icon> -->
           <span>{{ radioChild.title }}</span>
         </button>
       </mat-menu>
@@ -26,7 +27,8 @@
     <!-- Handle leaf node menu items -->
     <ng-container *ngIf="!child.children || child.children.length === 0" [ngSwitch]="child.type">
       <button mat-menu-item *ngSwitchCase="'checkbox'" [disabled]="child.disabled" (click)="onCheckboxMenuItemClick(child, $event)" role="menuitemcheckbox" [attr.aria-checked]="child.value === true">
-        <mat-icon *ngIf="child.value === true">check</mat-icon>
+        <mat-icon>{{ child.value ? 'check_box' : 'check_box_outline_blank' }}</mat-icon>
+        <!-- <mat-icon *ngIf="child.value === true">check</mat-icon> -->
         <span>{{ child.title }}</span>
         <span class="menu-bar-item-menu-item--command">{{ child.command }}</span>
       </button>
