@@ -113,5 +113,8 @@
       }
     }
   },
-  "defaultProject": "mat-menu-bar-demo"
+  "defaultProject": "mat-menu-bar-demo",
+  "cli": {
+    "analytics": false
+  }
 }
