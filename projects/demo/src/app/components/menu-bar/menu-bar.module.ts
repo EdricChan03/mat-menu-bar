@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
@@ -20,7 +19,6 @@ const MATERIAL_MODULES = [
 @NgModule({
   imports: [
     CommonModule,
-    FlexLayoutModule,
     MATERIAL_MODULES
   ],
   declarations: [
