@@ -13,7 +13,7 @@ export class DynamicMenuBarDemoComponent {
   menuBarItems: MenuBarItem[] = [];
 
   constructor(
-    fb: FormBuilder
+    private fb: FormBuilder
   ) {
     this.addMenuBarItemForm = fb.group({
       title: ['', Validators.required],
